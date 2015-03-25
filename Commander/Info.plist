@@ -9,7 +9,7 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>commander-item</string>
+				<string>monkeymenu</string>
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>Monkey Menu</string>

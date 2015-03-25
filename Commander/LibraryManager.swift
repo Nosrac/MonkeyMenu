@@ -120,7 +120,7 @@ class LibraryManager
 	
 	static func installLibrary(file : String) -> String?
 	{
-		if file.endsWith(".commander-library") && NSFileManager.defaultManager().fileExistsAtPath(file)
+		if file.endsWith(".monkeymenu") && NSFileManager.defaultManager().fileExistsAtPath(file)
 		{
 			var dir = self.newDirectory()
 			var userdir = dir + "/user/"
@@ -146,7 +146,7 @@ class LibraryManager
 				return nil;
 			}
 			
-			self.manager.copyItemAtPath(file, toPath: dir + "/original.commander-library", error: error)
+			self.manager.copyItemAtPath(file, toPath: dir + "/original.monkeymenu", error: error)
 			
 			return libraryFile
 		}

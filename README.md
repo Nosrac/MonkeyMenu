@@ -46,7 +46,7 @@ A developer tool to create searchable, hierarchical menus.
 - Included in *items*
 	name: string
 
-	// The following tasks are optional:
+	// The following values are optional:
 	
 	child_actions: array of actions
 	dismiss: bool // Hide Commander after running action?
@@ -54,9 +54,13 @@ A developer tool to create searchable, hierarchical menus.
 	// Each performed task is run in the following order:
 	
 	confirmation_message: string // If 'Cancel' is clicked, the action is aborted
+	
 	cmd: string // Runs this CLI command
+	
 	copy: string // Copies this string to the user's clipboard
+	
 	open: string // Opens this file/URL for the user
+	
 	open_item: object of an item. //  This item's children are displayed
 
 # API

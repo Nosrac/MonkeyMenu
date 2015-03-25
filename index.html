@@ -53,9 +53,7 @@
 <p>menu.json
 name: string</p>
 
-<h1>
-<a id="this-command-is-expected-to-return-a-json-encoded-array-of-items" class="anchor" href="#this-command-is-expected-to-return-a-json-encoded-array-of-items" aria-hidden="true"><span class="octicon octicon-link"></span></a>This command is expected to return a JSON-encoded array of <em>items</em>
-</h1>
+<p>// This command is expected to return a JSON-encoded array of <em>items</em></p>
 
 <p>children_cmd: string</p>
 </li>
@@ -80,14 +78,13 @@ name: string</p>
 <p>Output from a bash command
 name: string</p>
 
-<h1>
-<a id="this-command-is-expected-to-return-a-json-encoded-array-of-items-1" class="anchor" href="#this-command-is-expected-to-return-a-json-encoded-array-of-items-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>This command is expected to return a JSON-encoded array of items</h1>
+<p>// This command is expected to return a JSON-encoded array of <em>items</em></p>
 
 <p>children_cmd: string</p>
 
-<p>actions: array of actions</p>
+<p>actions: array of <em>actions</em></p>
 
-<p>preload_children: bool # Default = false</p>
+<p>preload_children: bool // Default = false</p>
 </li>
 </ul>
 
@@ -114,20 +111,18 @@ name: string</p>
 <p>Included in <em>items</em>
 name: string</p>
 
-<h1>
-<a id="the-following-tasks-are-optional" class="anchor" href="#the-following-tasks-are-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>The following tasks are optional:</h1>
+<p>// The following tasks are optional:</p>
 
-<p>child_actions : array of actions
-dismiss: bool # Hide Commander after running action?</p>
+<p>child_actions: array of actions
+dismiss: bool // Hide Commander after running action?</p>
 
-<h1>
-<a id="each-performed-task-is-run-in-the-following-order" class="anchor" href="#each-performed-task-is-run-in-the-following-order" aria-hidden="true"><span class="octicon octicon-link"></span></a>Each performed task is run in the following order:</h1>
+<p>// Each performed task is run in the following order:</p>
 
-<p>confirmation_message: string # If 'Cancel' is clicked, the action is aborted
-cmd: string # Runs this CLI command
-copy: string # Copies this string to the user's clipboard
-open: string # Opens this file/URL for the user
-open_item: object of an item.  This item's children are displayed</p>
+<p>confirmation_message: string // If 'Cancel' is clicked, the action is aborted
+cmd: string // Runs this CLI command
+copy: string // Copies this string to the user's clipboard
+open: string // Opens this file/URL for the user
+open_item: object of an item. //  This item's children are displayed</p>
 </li>
 </ul>
 

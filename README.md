@@ -62,8 +62,3 @@ A developer tool to create searchable, hierarchical menus.
 	open: string // Opens this file/URL for the user
 	
 	open_item: object of an item. //  This item's children are displayed
-
-# API
-- Commands should return JSON
-- Commands are run, PWD is a persistent read-write directory
-

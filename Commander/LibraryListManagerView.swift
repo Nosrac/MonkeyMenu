@@ -30,25 +30,18 @@ class LibraryListManagerView: NSViewController {
 		}
 	}
 	
-	var open : NSOpenPanel?
 	
 	func openLibrary()
 	{
-		Async.main
-		{
-			self.open = NSOpenPanel()
-			if let open = self.open
+		let open = OpenPanel()
+		open.canChooseDirectories = false
+		open.allowedFileTypes = [ ".commander-library" ]
+		
+		open.beginWithCompletionHandler { (button : Int) -> Void in
+			if let file = open.URL?.absoluteString
+				where button == NSFileHandlingPanelOKButton
 			{
-				open.canChooseDirectories = false
-				open.allowedFileTypes = [ ".commander-library" ]
-				
-				open.beginWithCompletionHandler { (button : Int) -> Void in
-					if let file = open.URL?.absoluteString
-						where button == NSFileHandlingPanelOKButton
-					{
-						self.openLibrary(file)
-					}
-				}
+				self.openLibrary(file)
 			}
 		}
 	}

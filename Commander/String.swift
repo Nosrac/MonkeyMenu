@@ -39,4 +39,11 @@ extension String {
 		}
 		return false
 	}
+	
+	func contains (str: String) -> Bool {
+		if let range = self.rangeOfString(str) {
+			return true
+		}
+		return false
+	}
 }

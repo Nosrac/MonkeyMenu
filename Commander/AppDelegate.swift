@@ -26,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		LibraryManager.loadLibraries();
 		LibraryManager.open()
+		
+		MenuMaker.createMenu("/private/tmp/test");
 	}
 
 	func applicationWillTerminate(aNotification: NSNotification) {

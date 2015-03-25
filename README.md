@@ -10,7 +10,7 @@ A developer tool to create searchable, hierarchical menus.
 - menu.json
 	name: string
 
-	# This command is expected to return a JSON-encoded array of *items*
+	// This command is expected to return a JSON-encoded array of *items*
 	children_cmd: string
 
 # Items
@@ -23,7 +23,7 @@ A developer tool to create searchable, hierarchical menus.
 - Output from a bash command
 	name: string
 
-	# This command is expected to return a JSON-encoded array of items
+	// This command is expected to return a JSON-encoded array of items
 	children_cmd: string
 
 	actions: array of actions
@@ -44,12 +44,12 @@ A developer tool to create searchable, hierarchical menus.
 - Included in *items*
 	name: string
 
-	# The following tasks are optional:
+	// The following tasks are optional:
 	child_actions : array of actions
 	dismiss: bool # Hide Commander after running action?
 
-	# Each performed task is run in the following order:
-
+	// Each performed task is run in the following order:
+	
 	confirmation_message: string # If 'Cancel' is clicked, the action is aborted
 	cmd: string # Runs this CLI command
 	copy: string # Copies this string to the user's clipboard

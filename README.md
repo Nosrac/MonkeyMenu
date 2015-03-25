@@ -30,7 +30,7 @@ A developer tool to create searchable, hierarchical menus.
 
 	actions: array of *actions*
 
-	preload_children: bool # Default = false
+	preload_children: bool // Default = false
 
 # Actions
 - Each action has a name and can perform multiple tasks
@@ -48,16 +48,16 @@ A developer tool to create searchable, hierarchical menus.
 
 	// The following tasks are optional:
 	
-	child_actions : array of actions
-	dismiss: bool # Hide Commander after running action?
+	child_actions: array of actions
+	dismiss: bool // Hide Commander after running action?
 
 	// Each performed task is run in the following order:
 	
-	confirmation_message: string # If 'Cancel' is clicked, the action is aborted
-	cmd: string # Runs this CLI command
-	copy: string # Copies this string to the user's clipboard
-	open: string # Opens this file/URL for the user
-	open_item: object of an item.  This item's children are displayed
+	confirmation_message: string // If 'Cancel' is clicked, the action is aborted
+	cmd: string // Runs this CLI command
+	copy: string // Copies this string to the user's clipboard
+	open: string // Opens this file/URL for the user
+	open_item: object of an item. //  This item's children are displayed
 
 # API
 - Commands should return JSON

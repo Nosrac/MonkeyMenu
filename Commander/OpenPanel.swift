@@ -13,9 +13,9 @@ class OpenPanel: NSOpenPanel {
 	override func beginWithCompletionHandler(handler: (Int) -> Void)
 	{
 		let args = NSProcessInfo.processInfo().arguments
-		
-		println(args)
 	
+		// Run this code if running as DEBUG.  Crashes otherwise
+		
 		if let executable = args.first as? String
 		where executable.contains("Build/Products/Debug/Monkey Menu.app")
 		{

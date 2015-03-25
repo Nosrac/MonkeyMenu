@@ -26,7 +26,6 @@
 		27A4D6AD1A9E947F00AF7404 /* CommanderItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4D6AC1A9E947F00AF7404 /* CommanderItemListView.swift */; };
 		27A4D6AF1A9E9B7300AF7404 /* CapturedTargetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4D6AE1A9E9B7300AF7404 /* CapturedTargetAction.swift */; };
 		27AD17F71AB60DCD00C1119F /* LibraryListManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AD17F61AB60DCD00C1119F /* LibraryListManagerView.swift */; };
-		27AEAAA11A9FD33200D66EAC /* API Documentation.md in Resources */ = {isa = PBXBuildFile; fileRef = 27AEAAA01A9FD33200D66EAC /* API Documentation.md */; };
 		27CC3C9E1A4A2FFA00CC25E4 /* CommanderItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC3C9C1A4A2FFA00CC25E4 /* CommanderItemList.swift */; };
 		27D166121A4A8C0B0014AAA3 /* CommanderItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D166111A4A8C0B0014AAA3 /* CommanderItemFilter.swift */; };
 		27DDFC881A94312C00C865FF /* CommanderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDFC871A94312C00C865FF /* CommanderAction.swift */; };
@@ -50,13 +49,13 @@
 		270D4D631AAFFA5B0079AC3E /* Library Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Library Manager.storyboard"; sourceTree = "<group>"; };
 		270D4D671AB005CE0079AC3E /* Commander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Commander-Bridging-Header.h"; sourceTree = "<group>"; };
 		271EF58F1A4A23850092C104 /* CommaderItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommaderItemViewController.swift; sourceTree = "<group>"; };
-		2730C4BA1A479B160020FB56 /* Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commander.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2730C4BA1A479B160020FB56 /* Monkey Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monkey Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2730C4BE1A479B160020FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2730C4BF1A479B160020FB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2730C4C11A479B160020FB56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2730C4C31A479B160020FB56 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2730C4C61A479B160020FB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2730C4CC1A479B160020FB56 /* CommanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2730C4CC1A479B160020FB56 /* Monkey MenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Monkey MenuTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2730C4D11A479B160020FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2730C4D21A479B160020FB56 /* CommanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderTests.swift; sourceTree = "<group>"; };
 		2730C4DC1A479B340020FB56 /* CommanderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanderItem.swift; sourceTree = "<group>"; };
@@ -71,7 +70,6 @@
 		27A4D6AC1A9E947F00AF7404 /* CommanderItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanderItemListView.swift; sourceTree = "<group>"; };
 		27A4D6AE1A9E9B7300AF7404 /* CapturedTargetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturedTargetAction.swift; sourceTree = "<group>"; };
 		27AD17F61AB60DCD00C1119F /* LibraryListManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryListManagerView.swift; sourceTree = "<group>"; };
-		27AEAAA01A9FD33200D66EAC /* API Documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "API Documentation.md"; sourceTree = "<group>"; };
 		27CC3C9C1A4A2FFA00CC25E4 /* CommanderItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanderItemList.swift; sourceTree = SOURCE_ROOT; };
 		27D166111A4A8C0B0014AAA3 /* CommanderItemFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanderItemFilter.swift; sourceTree = "<group>"; };
 		27DDFC871A94312C00C865FF /* CommanderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanderAction.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				2762517F1AC0DA0C00C386DA /* libz.dylib */,
-				27AEAAA01A9FD33200D66EAC /* API Documentation.md */,
 				2730C4BC1A479B160020FB56 /* Commander */,
 				2730C4CF1A479B160020FB56 /* CommanderTests */,
 				2730C4BB1A479B160020FB56 /* Products */,
@@ -114,8 +111,8 @@
 		2730C4BB1A479B160020FB56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2730C4BA1A479B160020FB56 /* Commander.app */,
-				2730C4CC1A479B160020FB56 /* CommanderTests.xctest */,
+				2730C4BA1A479B160020FB56 /* Monkey Menu.app */,
+				2730C4CC1A479B160020FB56 /* Monkey MenuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,9 +218,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2730C4B91A479B160020FB56 /* Commander */ = {
+		2730C4B91A479B160020FB56 /* Monkey Menu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2730C4D61A479B160020FB56 /* Build configuration list for PBXNativeTarget "Commander" */;
+			buildConfigurationList = 2730C4D61A479B160020FB56 /* Build configuration list for PBXNativeTarget "Monkey Menu" */;
 			buildPhases = (
 				2730C4B61A479B160020FB56 /* Sources */,
 				2730C4B71A479B160020FB56 /* Frameworks */,
@@ -233,14 +230,14 @@
 			);
 			dependencies = (
 			);
-			name = Commander;
+			name = "Monkey Menu";
 			productName = Commander;
-			productReference = 2730C4BA1A479B160020FB56 /* Commander.app */;
+			productReference = 2730C4BA1A479B160020FB56 /* Monkey Menu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2730C4CB1A479B160020FB56 /* CommanderTests */ = {
+		2730C4CB1A479B160020FB56 /* Monkey MenuTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2730C4D91A479B160020FB56 /* Build configuration list for PBXNativeTarget "CommanderTests" */;
+			buildConfigurationList = 2730C4D91A479B160020FB56 /* Build configuration list for PBXNativeTarget "Monkey MenuTests" */;
 			buildPhases = (
 				2730C4C81A479B160020FB56 /* Sources */,
 				2730C4C91A479B160020FB56 /* Frameworks */,
@@ -251,9 +248,9 @@
 			dependencies = (
 				2730C4CE1A479B160020FB56 /* PBXTargetDependency */,
 			);
-			name = CommanderTests;
+			name = "Monkey MenuTests";
 			productName = CommanderTests;
-			productReference = 2730C4CC1A479B160020FB56 /* CommanderTests.xctest */;
+			productReference = 2730C4CC1A479B160020FB56 /* Monkey MenuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -274,7 +271,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2730C4B51A479B160020FB56 /* Build configuration list for PBXProject "Commander" */;
+			buildConfigurationList = 2730C4B51A479B160020FB56 /* Build configuration list for PBXProject "Monkey Menu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -287,8 +284,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2730C4B91A479B160020FB56 /* Commander */,
-				2730C4CB1A479B160020FB56 /* CommanderTests */,
+				2730C4B91A479B160020FB56 /* Monkey Menu */,
+				2730C4CB1A479B160020FB56 /* Monkey MenuTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,7 +298,6 @@
 				2730C4C41A479B160020FB56 /* Images.xcassets in Resources */,
 				270D4D641AAFFA5B0079AC3E /* Library Manager.storyboard in Resources */,
 				2730C4C71A479B160020FB56 /* Main.storyboard in Resources */,
-				27AEAAA11A9FD33200D66EAC /* API Documentation.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +352,7 @@
 /* Begin PBXTargetDependency section */
 		2730C4CE1A479B160020FB56 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2730C4B91A479B160020FB56 /* Commander */;
+			target = 2730C4B91A479B160020FB56 /* Monkey Menu */;
 			targetProxy = 2730C4CD1A479B160020FB56 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,7 +453,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Commander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Monkey Menu";
 				SWIFT_OBJC_BRIDGING_HEADER = "Commander/Commander-Bridging-Header.h";
 			};
 			name = Debug;
@@ -469,7 +465,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Commander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Monkey Menu";
 				SWIFT_OBJC_BRIDGING_HEADER = "Commander/Commander-Bridging-Header.h";
 			};
 			name = Release;
@@ -489,7 +485,7 @@
 				);
 				INFOPLIST_FILE = CommanderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Monkey MenuTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commander.app/Contents/MacOS/Commander";
 			};
 			name = Debug;
@@ -505,7 +501,7 @@
 				);
 				INFOPLIST_FILE = CommanderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Monkey MenuTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commander.app/Contents/MacOS/Commander";
 			};
 			name = Release;
@@ -513,7 +509,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2730C4B51A479B160020FB56 /* Build configuration list for PBXProject "Commander" */ = {
+		2730C4B51A479B160020FB56 /* Build configuration list for PBXProject "Monkey Menu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2730C4D41A479B160020FB56 /* Debug */,
@@ -522,7 +518,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2730C4D61A479B160020FB56 /* Build configuration list for PBXNativeTarget "Commander" */ = {
+		2730C4D61A479B160020FB56 /* Build configuration list for PBXNativeTarget "Monkey Menu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2730C4D71A479B160020FB56 /* Debug */,
@@ -531,7 +527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2730C4D91A479B160020FB56 /* Build configuration list for PBXNativeTarget "CommanderTests" */ = {
+		2730C4D91A479B160020FB56 /* Build configuration list for PBXNativeTarget "Monkey MenuTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2730C4DA1A479B160020FB56 /* Debug */,

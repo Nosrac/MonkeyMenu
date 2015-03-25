@@ -85,57 +85,15 @@ class LibraryManager
 		return dir
 	}
 	
-	static func openLibrary(file : String) -> Bool
+	static func openWindow(file : String)
 	{
-		return self.installLibrary(file)
-	}
-	
-	static var manager : NSFileManager
-	{
-		return NSFileManager.defaultManager()
-	}
-	
-	static func installLibrary(file : String) -> Bool
-	{
-		if file.endsWith(".commander-library") && NSFileManager.defaultManager().fileExistsAtPath(file)
+		if self.manager.fileExistsAtPath(file)
 		{
-			var dir = self.newDirectory()
-			var userdir = dir + "/user/"
-			
-			var error = NSErrorPointer()
-			self.manager.removeItemAtPath(userdir, error: error)
-			
-			var cli = CommandLine()
-			cli.runCommand("/usr/bin/unzip", arguments: [file, "-d", userdir])
-			
-			if !self.manager.fileExistsAtPath(userdir)
+			if let item = CommanderItem(file: file)
 			{
-				Log.error("Failed to unzip library \(file)", category: nil)
-				return false
+				self.openWindow(item)
 			}
-			
-			self.cleanInstalledLibrary(userdir)
-			
-			if !self.manager.fileExistsAtPath(userdir + "library.json")
-			{
-				return false;
-			}
-			
-			self.manager.copyItemAtPath(file, toPath: dir + "/original.commander-library", error: error)
-			
-			return true
 		}
-		Log.error("Failed to open library \(file)", category: nil)
-		return false;
-	}
-	
-	static func tempDir() -> String
-	{
-		var dir = "/tmp/" + NSUUID().UUIDString + "/"
-		
-		self.createDirectory(dir)
-		
-		return dir
 	}
 	
 	static func openWindow(item : CommanderItem)
@@ -153,6 +111,56 @@ class LibraryManager
 			
 			self.libraryWindows.append( window )
 		}
+	}
+	
+	static var manager : NSFileManager
+	{
+		return NSFileManager.defaultManager()
+	}
+	
+	static func installLibrary(file : String) -> String?
+	{
+		if file.endsWith(".commander-library") && NSFileManager.defaultManager().fileExistsAtPath(file)
+		{
+			var dir = self.newDirectory()
+			var userdir = dir + "/user/"
+			
+			var error = NSErrorPointer()
+			self.manager.removeItemAtPath(userdir, error: error)
+			
+			var cli = CommandLine()
+			cli.runCommand("/usr/bin/unzip", arguments: [file, "-d", userdir])
+			
+			if !self.manager.fileExistsAtPath(userdir)
+			{
+				Log.error("Failed to unzip library \(file)", category: nil)
+				return nil
+			}
+			
+			self.cleanInstalledLibrary(userdir)
+			
+			let libraryFile = userdir + "library.json"
+			
+			if !self.manager.fileExistsAtPath(libraryFile)
+			{
+				return nil;
+			}
+			
+			self.manager.copyItemAtPath(file, toPath: dir + "/original.commander-library", error: error)
+			
+			return libraryFile
+		}
+		Log.error("Failed to open library \(file)", category: nil)
+		return nil;
+	}
+	
+	static func tempDir() -> String
+	{
+		var dir = "/tmp/" + NSUUID().UUIDString + "/"
+		
+		self.createDirectory(dir)
+		
+		return dir
 	}
 	
 	static func cleanInstalledLibrary(userdir : String)

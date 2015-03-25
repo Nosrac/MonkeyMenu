@@ -19,6 +19,11 @@ class OpenPanel: NSOpenPanel {
 		if let executable = args.first as? String
 		where executable.contains("Build/Products/Debug/Monkey Menu.app")
 		{
+			let alert = NSAlert();
+			alert.addButtonWithTitle("Awe :(")
+			alert.messageText = "You can't open files in DEBUG =("
+			alert.runModal()
+			
 			handler(NSFileHandlingPanelCancelButton)
 		} else {
 			super.beginWithCompletionHandler(handler)

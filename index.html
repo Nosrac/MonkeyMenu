@@ -40,10 +40,24 @@
 <a id="menus" class="anchor" href="#menus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Menus</h1>
 
 <ul>
-<li>Menus are <em>Items</em> that you can open</li>
-<li>The items displayed are the results of running the item's <em>children_cmd</em>
-</li>
-<li>Stored on disk as a JSON representation of your <em>item</em>
+<li>Menus are created from a zipped directory containing at least one file:  menu.json</li>
+<li>menu.json is a JSON representation of your menu, containing its name and a command which will output its children</li>
+<li>PWD/CWD contains all of the files in your zipped directory.  It is a sandboxed folder for your menu.  Feel free to read/write to this directory for caching and other purposes</li>
+</ul>
+
+<h1>
+<a id="menu-api---json" class="anchor" href="#menu-api---json" aria-hidden="true"><span class="octicon octicon-link"></span></a>Menu API - JSON</h1>
+
+<ul>
+<li>
+<p>menu.json
+name: string</p>
+
+<h1>
+<a id="this-command-is-expected-to-return-a-json-encoded-array-of-items" class="anchor" href="#this-command-is-expected-to-return-a-json-encoded-array-of-items" aria-hidden="true"><span class="octicon octicon-link"></span></a>This command is expected to return a JSON-encoded array of <em>items</em>
+</h1>
+
+<p>children_cmd: string</p>
 </li>
 </ul>
 
@@ -59,6 +73,25 @@
 </ul>
 
 <h1>
+<a id="items-api---json" class="anchor" href="#items-api---json" aria-hidden="true"><span class="octicon octicon-link"></span></a>Items API - JSON</h1>
+
+<ul>
+<li>
+<p>Output from a bash command
+name: string</p>
+
+<h1>
+<a id="this-command-is-expected-to-return-a-json-encoded-array-of-items-1" class="anchor" href="#this-command-is-expected-to-return-a-json-encoded-array-of-items-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>This command is expected to return a JSON-encoded array of items</h1>
+
+<p>children_cmd: string</p>
+
+<p>actions: array of actions</p>
+
+<p>preload_children: bool # Default = false</p>
+</li>
+</ul>
+
+<h1>
 <a id="actions" class="anchor" href="#actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions</h1>
 
 <ul>
@@ -69,48 +102,42 @@
 <li>Dismiss (close menu after running)</li>
 <li>Open <em>item</em>
 </li>
-<li>Child actions (include a sub menu)</li>
+<li>Child actions (include a sub menu of actions)</li>
 <li>In addition, separators can be used</li>
 </ul>
 
-<h3>
-<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h3>
+<h1>
+<a id="actions-api---json" class="anchor" href="#actions-api---json" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions API - JSON</h1>
+
+<ul>
+<li>
+<p>Included in <em>items</em>
+name: string</p>
+
+<h1>
+<a id="the-following-tasks-are-optional" class="anchor" href="#the-following-tasks-are-optional" aria-hidden="true"><span class="octicon octicon-link"></span></a>The following tasks are optional:</h1>
+
+<p>child_actions : array of actions
+dismiss: bool # Hide Commander after running action?</p>
+
+<h1>
+<a id="each-performed-task-is-run-in-the-following-order" class="anchor" href="#each-performed-task-is-run-in-the-following-order" aria-hidden="true"><span class="octicon octicon-link"></span></a>Each performed task is run in the following order:</h1>
+
+<p>confirmation_message: string # If 'Cancel' is clicked, the action is aborted
+cmd: string # Runs this CLI command
+copy: string # Copies this string to the user's clipboard
+open: string # Opens this file/URL for the user
+open_item: object of an item.  This item's children are displayed</p>
+</li>
+</ul>
+
+<h1>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h1>
 
 <ul>
 <li>Commands should return JSON</li>
 <li>Commands are run, PWD is a persistent read-write directory</li>
 </ul>
-
-<h1>
-<a id="items-1" class="anchor" href="#items-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Items</h1>
-
-<pre><code>name: string
-
-# This command is expected to return a JSON-encoded array of items
-children_cmd: string
-
-actions: array of actions
-
-preload_children: bool # Default = false
-</code></pre>
-
-<h1>
-<a id="actions-1" class="anchor" href="#actions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions</h1>
-
-<pre><code>name: string
-
-# The following tasks are optional:
-child_actions : array of actions
-dismiss: bool # Hide Commander after running action?
-
-# Each performed task is run in the following order:
-
-confirmation_message: string # If 'Cancel' is clicked, the action is aborted
-cmd: string # Runs this CLI command
-copy: string # Copies this string to the user's clipboard
-open: string # Opens this file/URL for the user
-open_item: object of an item.  This item's children are displayed
-</code></pre>
         </section>
 
         <footer>

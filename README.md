@@ -11,6 +11,7 @@ A developer tool to create searchable, hierarchical menus.
 	name: string
 
 	// This command is expected to return a JSON-encoded array of *items*
+	
 	children_cmd: string
 
 # Items
@@ -23,10 +24,11 @@ A developer tool to create searchable, hierarchical menus.
 - Output from a bash command
 	name: string
 
-	// This command is expected to return a JSON-encoded array of items
+	// This command is expected to return a JSON-encoded array of *items*
+	
 	children_cmd: string
 
-	actions: array of actions
+	actions: array of *actions*
 
 	preload_children: bool # Default = false
 
@@ -45,6 +47,7 @@ A developer tool to create searchable, hierarchical menus.
 	name: string
 
 	// The following tasks are optional:
+	
 	child_actions : array of actions
 	dismiss: bool # Hide Commander after running action?
 

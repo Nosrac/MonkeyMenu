@@ -242,7 +242,7 @@
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iln-QY-NBq">
                                         <rect key="frame" x="20" y="5" width="145" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="145" id="jjl-tc-1qt"/>
+                                            <constraint firstAttribute="width" constant="145" id="1ef-HR-fgE"/>
                                         </constraints>
                                         <buttonCell key="cell" type="roundTextured" title="Open New Window" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FqR-Ut-eyb">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -256,14 +256,24 @@
                                             </binding>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zss-Ux-ntL">
+                                        <rect key="frame" x="255" y="6" width="175" height="17"/>
+                                        <buttonCell key="cell" type="inline" title="Open from Command Line" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HOb-my-m0z">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                        </buttonCell>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="988-So-Pmj" firstAttribute="leading" secondItem="Iln-QY-NBq" secondAttribute="leading" id="4DY-xa-xet"/>
+                                    <constraint firstItem="zss-Ux-ntL" firstAttribute="trailing" secondItem="988-So-Pmj" secondAttribute="trailing" id="2Tt-e5-TIi"/>
+                                    <constraint firstItem="Iln-QY-NBq" firstAttribute="leading" secondItem="988-So-Pmj" secondAttribute="leading" id="7M2-GC-1qt"/>
                                     <constraint firstItem="988-So-Pmj" firstAttribute="trailing" secondItem="mIU-0h-n6C" secondAttribute="trailing" id="7QD-d4-nqP"/>
                                     <constraint firstItem="mIU-0h-n6C" firstAttribute="leading" secondItem="988-So-Pmj" secondAttribute="leading" id="CM7-jJ-btu"/>
-                                    <constraint firstItem="Iln-QY-NBq" firstAttribute="top" secondItem="988-So-Pmj" secondAttribute="bottom" constant="4" id="Igd-lJ-AbU"/>
-                                    <constraint firstAttribute="bottom" secondItem="Iln-QY-NBq" secondAttribute="bottom" constant="7" id="OaD-Di-X5d"/>
+                                    <constraint firstItem="zss-Ux-ntL" firstAttribute="leading" secondItem="Iln-QY-NBq" secondAttribute="trailing" constant="90" id="J8Q-Yp-KzB"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iln-QY-NBq" secondAttribute="bottom" constant="7" id="KO0-mc-KYc"/>
                                     <constraint firstItem="988-So-Pmj" firstAttribute="top" secondItem="mIU-0h-n6C" secondAttribute="bottom" constant="8" symbolic="YES" id="jgN-pV-tt7"/>
+                                    <constraint firstItem="Iln-QY-NBq" firstAttribute="top" secondItem="988-So-Pmj" secondAttribute="bottom" constant="4" id="joH-3C-P0l"/>
+                                    <constraint firstItem="zss-Ux-ntL" firstAttribute="bottom" secondItem="Iln-QY-NBq" secondAttribute="bottom" id="mvH-L2-yJy"/>
                                     <constraint firstAttribute="trailing" secondItem="mIU-0h-n6C" secondAttribute="trailing" constant="20" symbolic="YES" id="oNK-zU-gx8"/>
                                     <constraint firstItem="mIU-0h-n6C" firstAttribute="leading" secondItem="cad-tJ-KsW" secondAttribute="leading" constant="20" symbolic="YES" id="pFm-as-0TL"/>
                                     <constraint firstItem="mIU-0h-n6C" firstAttribute="top" secondItem="cad-tJ-KsW" secondAttribute="top" constant="20" symbolic="YES" id="yFb-Mx-aIh"/>
@@ -311,17 +321,10 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zss-Ux-ntL">
-                                        <rect key="frame" x="20" y="19" width="178" height="17"/>
-                                        <buttonCell key="cell" type="inline" title="Open from Command Line" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HOb-my-m0z">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
-                                        </buttonCell>
-                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1uZ-Bs-SMK">
                                         <rect key="frame" x="347" y="19" width="83" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="83" id="8VH-Xa-l6t"/>
+                                            <constraint firstAttribute="width" constant="83" id="0hD-C6-xrU"/>
                                         </constraints>
                                         <buttonCell key="cell" type="inline" title="Uninstall" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ndI-CZ-c4Y">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -331,18 +334,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Vx1-jb-KAg" firstAttribute="leading" secondItem="NTk-5l-5H3" secondAttribute="trailing" constant="9" id="0c4-Fp-TNb"/>
-                                    <constraint firstItem="NTk-5l-5H3" firstAttribute="trailing" secondItem="zss-Ux-ntL" secondAttribute="trailing" id="8nZ-E2-er6"/>
-                                    <constraint firstItem="zss-Ux-ntL" firstAttribute="leading" secondItem="jcz-uC-2Et" secondAttribute="leading" constant="20" symbolic="YES" id="9XJ-uN-IGa"/>
                                     <constraint firstItem="Vx1-jb-KAg" firstAttribute="leading" secondItem="SUH-1Y-PT1" secondAttribute="leading" id="H7o-6t-p3f"/>
                                     <constraint firstItem="NTk-5l-5H3" firstAttribute="leading" secondItem="jcz-uC-2Et" secondAttribute="leading" constant="78" id="IYg-Wb-nRH"/>
-                                    <constraint firstAttribute="trailing" secondItem="1uZ-Bs-SMK" secondAttribute="trailing" constant="20" symbolic="YES" id="OEl-kK-Vac"/>
+                                    <constraint firstAttribute="trailing" secondItem="1uZ-Bs-SMK" secondAttribute="trailing" constant="20" symbolic="YES" id="P6a-9F-XFH"/>
                                     <constraint firstItem="SUH-1Y-PT1" firstAttribute="centerY" secondItem="jcz-uC-2Et" secondAttribute="centerY" id="SdK-ib-pzH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1uZ-Bs-SMK" secondAttribute="bottom" constant="20" symbolic="YES" id="URG-Lw-5rQ"/>
                                     <constraint firstItem="NTk-5l-5H3" firstAttribute="top" secondItem="jcz-uC-2Et" secondAttribute="top" constant="20" symbolic="YES" id="bs2-5P-ESJ"/>
                                     <constraint firstItem="SUH-1Y-PT1" firstAttribute="top" secondItem="Vx1-jb-KAg" secondAttribute="bottom" constant="13" id="hQw-jL-f4j"/>
                                     <constraint firstItem="Vx1-jb-KAg" firstAttribute="top" secondItem="NTk-5l-5H3" secondAttribute="top" id="jtR-zw-q3V"/>
                                     <constraint firstAttribute="trailing" secondItem="SUH-1Y-PT1" secondAttribute="trailing" constant="21" id="kPx-9s-ZfT"/>
-                                    <constraint firstItem="zss-Ux-ntL" firstAttribute="baseline" secondItem="1uZ-Bs-SMK" secondAttribute="baseline" id="l8e-sJ-jeO"/>
-                                    <constraint firstAttribute="bottom" secondItem="zss-Ux-ntL" secondAttribute="bottom" constant="20" symbolic="YES" id="ri5-hR-OPb"/>
                                 </constraints>
                             </customView>
                         </subviews>

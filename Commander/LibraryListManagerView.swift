@@ -27,11 +27,37 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 	
 	func setupTable()
 	{
-		let callback = CapturedTargetAction
+		if let table = self.table
 		{
-			self.table?.reloadData()
+			let reloadCallback = CapturedTargetAction
+			{
+				table.reloadData()
+			}
+			NSNotificationCenter.defaultCenter().addObserver(reloadCallback, selector: reloadCallback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
+			
+			table.doubleAction = "openSelectedMenuInWindow"
+			table.target = self
 		}
-		NSNotificationCenter.defaultCenter().addObserver(callback, selector: callback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
+	}
+	
+	func openSelectedMenuInWindow ()
+	{
+		if let menu = self.selectedMenu
+		{
+			LibraryManager.openWindow(menu)
+		}
+	}
+	var selectedMenu : Menu?
+		{
+			let row = self.table!.selectedRow
+			let menu : Menu?
+			if row >= 0
+			{
+				menu = LibraryManager.menus[ row ]
+			} else {
+				menu = nil
+			}
+			return menu;
 	}
 	
 	func openAddButtonMenu()
@@ -97,16 +123,9 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 		return 32.0
 	}
 	
+	
 	func tableViewSelectionDidChange(notification: NSNotification)
 	{
-		let row = self.table!.selectedRow
-		let menu : Menu?
-		if row >= 0
-		{
-			menu = LibraryManager.menus[ row ]
-		} else {
-			menu = nil
-		}
-		self.manageMenu( menu )
+		self.manageMenu( self.selectedMenu )
 	}
 }

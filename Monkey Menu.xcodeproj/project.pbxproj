@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				2762517F1AC0DA0C00C386DA /* libz.dylib */,
-				2730C4BC1A479B160020FB56 /* Commander */,
+				2730C4BC1A479B160020FB56 /* Monkey Menu */,
 				2730C4CF1A479B160020FB56 /* CommanderTests */,
 				2730C4BB1A479B160020FB56 /* Products */,
 			);
@@ -127,7 +127,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2730C4BC1A479B160020FB56 /* Commander */ = {
+		2730C4BC1A479B160020FB56 /* Monkey Menu */ = {
 			isa = PBXGroup;
 			children = (
 				274DC4131A4A35B8000D1C51 /* Libs */,
@@ -145,6 +145,7 @@
 				2730C4C31A479B160020FB56 /* Images.xcassets */,
 				2730C4BD1A479B160020FB56 /* Supporting Files */,
 			);
+			name = "Monkey Menu";
 			path = Commander;
 			sourceTree = "<group>";
 		};

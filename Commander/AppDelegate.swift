@@ -10,14 +10,29 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+	
+	@IBOutlet var newWindowMenu : NSMenuItem?
 
 	func applicationDidFinishLaunching(aNotification: NSNotification) {
+		
+		
+	}
+	
+	func watchMenuChanges()
+	{
+		let callback = CapturedTargetAction
+		{
+			self.newWindowMenu?.submenu = LibraryManager.openWindowMenu()
+		}
+		NSNotificationCenter.defaultCenter().addObserver(callback, selector: callback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
 	}
 	
 	var libraryManager : NSWindow?
 	
 	func applicationWillFinishLaunching(notification: NSNotification) {
-
+		
+		self.watchMenuChanges()
+		
 		if let
 			window : NSWindow = NSApplication.sharedApplication().windows.first as? NSWindow
 		{
@@ -26,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		
 		LibraryManager.loadLibraries()
 		LibraryManager.open()
+		
 	}
 
 	func applicationWillTerminate(aNotification: NSNotification) {

@@ -15,8 +15,6 @@ class LibraryManager
 	static var menus : [ Menu ] = []
 	static func loadLibraries()
 	{
-		var items : [Menu] = []
-		
 		let error = NSErrorPointer()
 		
 		let contents = self.manager.contentsOfDirectoryAtPath(self.librariesDirectory, error: error)
@@ -27,13 +25,11 @@ class LibraryManager
 			{
 				if let menu = Menu(uuid: uuid)
 				{
-					menus.append(menu)
+					self.addMenu(menu)
 					self.openWindow(menu)
 				}
 			}
 		}
-		
-		self.menus = items
 	}
 	
 	static var window : NSWindow?
@@ -142,6 +138,7 @@ class LibraryManager
 		
 		if let menu = Menu(uuid:uuid)
 		{
+			self.menus.append(menu)
 			var error = NSErrorPointer()
 			
 			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)
@@ -174,5 +171,35 @@ class LibraryManager
 		return dir
 	}
 	
+	static func openWindowMenu() -> NSMenu
+	{
+		let menu = NSMenu()
+		
+		for aMenu in self.menus
+		{
+			if let item = aMenu.item
+			{
+				let action = CapturedTargetAction
+				{
+					self.openWindow(aMenu)
+				}
+				let menuitem = NSMenuItem(title: "New '\(item.name)' Menu", action: action.action, keyEquivalent: "")
+				menuitem.target = action
+				
+				menu.addItem(menuitem)
+			}
+		}
+		
+		return menu
+	}
+	
+	static let menusDidChangeEvent = "MenuDidChangeEvent"
+	
+	static func addMenu (menu : Menu)
+	{
+		self.menus.append( menu )
+		
+		NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
+	}
 	
 }

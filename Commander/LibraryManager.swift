@@ -26,7 +26,6 @@ class LibraryManager
 				if let menu = Menu(uuid: uuid)
 				{
 					self.addMenu(menu)
-					self.openWindow(menu)
 				}
 			}
 		}

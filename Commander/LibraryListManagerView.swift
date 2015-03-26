@@ -30,7 +30,6 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate {
 		}
 	}
 	
-	
 	func openLibrary()
 	{
 		let open = OpenPanel()

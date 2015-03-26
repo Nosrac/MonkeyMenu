@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LibraryListManagerView: NSViewController {
+class LibraryListManagerView: NSViewController, NSTableViewDelegate {
 
 	@IBOutlet var addButton : NSButton?
 	
@@ -41,14 +41,9 @@ class LibraryListManagerView: NSViewController {
 			if let file = open.URL?.absoluteString
 				where button == NSFileHandlingPanelOKButton
 			{
-				self.openLibrary(file)
+				LibraryManager.installLibrary(file, openWindow: true)
 			}
 		}
-	}
-	
-	func openLibrary(file : String)
-	{
-		println(file)
 	}
 	
 	var addButtonMenu : NSMenu

@@ -183,7 +183,7 @@ class LibraryManager
 				{
 					self.openWindow(aMenu)
 				}
-				let menuitem = NSMenuItem(title: "New '\(item.name)' Menu", action: action.action, keyEquivalent: "")
+				let menuitem = NSMenuItem(title: "\(item.name) Menu", action: action.action, keyEquivalent: "")
 				menuitem.target = action
 				
 				menu.addItem(menuitem)

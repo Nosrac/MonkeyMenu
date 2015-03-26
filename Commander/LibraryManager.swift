@@ -92,7 +92,7 @@ class LibraryManager
 			window.makeKeyAndOrderFront(nil)
 			
 			window.title = item.name
-			controller.pushItem( item )
+			controller.menuLibrary = menu
 			
 			self.libraryWindows.append( window )
 		}

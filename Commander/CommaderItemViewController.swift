@@ -22,6 +22,18 @@ class CommanderItemViewController: ViewController, NSTextFieldDelegate
 	@IBOutlet var searchbar : CommanderSearchField?
 	@IBOutlet var loadingIndicator : NSProgressIndicator?
 	
+	
+	var menuLibrary : Menu?
+	{
+		didSet {
+			if let menu = self.menuLibrary,
+				item = menu.item
+			{
+				self.pushItem(item)
+			}
+		}
+	}
+	
 	var loading : Int = 0 {
 		didSet {
 			loadingChanged()

@@ -69,13 +69,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="276" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="33" horizontalPageScroll="10" verticalLineScroll="33" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLF-Ap-U2p">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLF-Ap-U2p">
                                 <rect key="frame" x="-1" y="35" width="277" height="266"/>
                                 <clipView key="contentView" id="arU-aV-tfY">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="31" rowSizeStyle="automatic" viewBased="YES" id="13O-5e-e6N">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="automatic" viewBased="YES" id="13O-5e-e6N">
                                             <rect key="frame" x="0.0" y="0.0" width="275" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -96,15 +96,18 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="e8T-Nl-hlm">
-                                                            <rect key="frame" x="1" y="1" width="272" height="31"/>
+                                                            <rect key="frame" x="1" y="1" width="272" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L3D-k1-6yN">
-                                                                    <rect key="frame" x="1" y="7" width="100" height="17"/>
+                                                                    <rect key="frame" x="1" y="8" width="270" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="FaX-pC-LkB">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        <connections>
+                                                                            <binding destination="e8T-Nl-hlm" name="value" keyPath="objectValue.item.name" id="pnG-QZ-xcE"/>
+                                                                        </connections>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
@@ -116,7 +119,8 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="delegate" destination="OLc-Ih-EZW" id="Huz-dd-sVl"/>
+                                                <outlet property="dataSource" destination="OLc-Ih-EZW" id="iMw-dy-3NJ"/>
+                                                <outlet property="delegate" destination="OLc-Ih-EZW" id="IWW-6R-yto"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -159,6 +163,7 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="7cM-zl-2bV" id="F3p-kX-fVz"/>
+                        <outlet property="table" destination="13O-5e-e6N" id="CkZ-XZ-7qH"/>
                     </connections>
                 </viewController>
                 <customObject id="qDW-8m-qZN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

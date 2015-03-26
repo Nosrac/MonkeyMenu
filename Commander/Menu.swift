@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Menu
+class Menu : NSObject
 {
 	let uuid : String
 	
@@ -47,8 +47,10 @@ class Menu
 		if NSFileManager.defaultManager().fileExistsAtPath(dir)
 		{
 			self.uuid = uuid
+			super.init()
 		} else {
 			self.uuid = ""
+			super.init()
 			return nil
 		}
 	}

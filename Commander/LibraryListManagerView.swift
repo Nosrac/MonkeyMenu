@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class LibraryListManagerView: NSViewController, NSTableViewDelegate {
-
+class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+	
 	@IBOutlet var addButton : NSButton?
+	@IBOutlet var table : NSTableView?
 	
     override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,7 +21,19 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate {
 			button.target = self
 			button.action = "openAddButtonMenu"
 		}
+		
+		self.setupTable()
     }
+	
+	func setupTable()
+	{
+		let callback = CapturedTargetAction
+		{
+			self.table?.reloadData()
+		}
+		NSNotificationCenter.defaultCenter().addObserver(callback, selector: callback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
+	}
+	
 	func openAddButtonMenu()
 	{
 		if let button = self.addButton,
@@ -60,5 +73,20 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate {
 		menu.addItem(open)
 		
 		return menu
+	}
+	
+	func numberOfRowsInTableView(tableView: NSTableView) -> Int
+	{
+		return LibraryManager.menus.count
+	}
+	
+	func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject?
+	{
+		return LibraryManager.menus[row]
+	}
+	
+	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat
+	{
+		return 32.0
 	}
 }

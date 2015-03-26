@@ -12,6 +12,8 @@ class Menu : NSObject
 {
 	let uuid : String
 	
+	var info : [String:AnyObject] = [:]
+	
 	var directory : String
 	{
 		return LibraryManager.dirForUUID(self.uuid)
@@ -41,12 +43,27 @@ class Menu : NSObject
 		return CommanderItem(file: self.libraryFile)
 	}()
 	
+	lazy var desc : String? =
+	{
+		if let desc = self.info["desc"] as? String
+		{
+			return desc
+		}
+		return nil
+	}()
+	
 	init?( uuid: String )
 	{
 		let dir = LibraryManager.dirForUUID(uuid)
 		if NSFileManager.defaultManager().fileExistsAtPath(dir)
 		{
 			self.uuid = uuid
+			
+			self.info["author"] = "Kyle C"
+			self.info["url"] = "http://google.com"
+			self.info["twitter"] = "@kyleacarson"
+			self.info["desc"] = "Lorem ipsum and etc"
+			
 			super.init()
 		} else {
 			self.uuid = ""
@@ -78,5 +95,21 @@ class Menu : NSObject
 			
 			return preferences
 		}
+	}
+	
+	var title : String
+	{
+		if let item = self.item
+		{
+			var title = item.name
+			
+			if let author = self.info["author"] as? String
+			{
+				title = "\(title) by \(author)"
+			}
+			
+			return title
+		}
+		return "<Unnamed Menu>"
 	}
 }

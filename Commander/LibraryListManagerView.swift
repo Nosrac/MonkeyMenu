@@ -58,6 +58,13 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 		}
 	}
 	
+	static let selectedMenuChangedEvent = "selectedMenuChangedEvent"
+	
+	func manageMenu( menu : Menu? )
+	{
+		NSNotificationCenter.defaultCenter().postNotificationName(LibraryListManagerView.selectedMenuChangedEvent, object: menu)
+	}
+	
 	var addButtonMenu : NSMenu
 	{
 		let menu = NSMenu(title: "Test")
@@ -88,5 +95,18 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat
 	{
 		return 32.0
+	}
+	
+	func tableViewSelectionDidChange(notification: NSNotification)
+	{
+		let row = self.table!.selectedRow
+		let menu : Menu?
+		if row >= 0
+		{
+			menu = LibraryManager.menus[ row ]
+		} else {
+			menu = nil
+		}
+		self.manageMenu( menu )
 	}
 }

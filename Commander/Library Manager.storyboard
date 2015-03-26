@@ -8,7 +8,7 @@
         <scene sceneID="12X-0x-9bq">
             <objects>
                 <windowController id="4vv-OA-yfs" sceneMemberID="viewController">
-                    <window key="window" title="Libraries" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="n2g-iQ-Rdg">
+                    <window key="window" title="Monkey Menus" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="n2g-iQ-Rdg">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -170,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="176" y="192"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu Manager-->
         <scene sceneID="0Cx-gq-krL">
             <objects>
-                <viewController id="pQI-24-HFE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuManager" id="pQI-24-HFE" customClass="MenuManager" customModule="Monkey_Menu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9R3-iZ-S2C">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="315"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -202,13 +202,13 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="988-So-Pmj">
+                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="allowed" translatesAutoresizingMaskIntoConstraints="NO" id="988-So-Pmj">
                                         <rect key="frame" x="20" y="33" width="410" height="93"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="y3N-pP-5hZ">
                                             <rect key="frame" x="1" y="1" width="238" height="133"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Yxa-ik-81P">
+                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" linkDetection="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Yxa-ik-81P">
                                                     <rect key="frame" x="0.0" y="0.0" width="239" height="133"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -255,6 +255,13 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <binding destination="pQI-24-HFE" name="target" keyPath="self" id="QIo-Ik-aXp">
+                                                <dictionary key="options">
+                                                    <string key="NSSelectorName">openNewWindow</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1uZ-Bs-SMK">
                                         <rect key="frame" x="183" y="5" width="94" height="25"/>
@@ -367,8 +374,13 @@
                             <constraint firstItem="jcz-uC-2Et" firstAttribute="leading" secondItem="Dba-Nj-a8f" secondAttribute="leading" id="zpg-mg-ETT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descTextView" destination="Yxa-ik-81P" id="tkL-bT-wc3"/>
+                        <outlet property="headerTextView" destination="mIU-0h-n6C" id="9RP-I3-rs2"/>
+                    </connections>
                 </viewController>
                 <customObject id="3S1-c0-IFh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="KIb-zQ-elw"/>
             </objects>
             <point key="canvasLocation" x="619" y="253.5"/>
         </scene>

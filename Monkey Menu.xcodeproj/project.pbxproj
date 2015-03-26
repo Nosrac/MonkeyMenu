@@ -10,6 +10,7 @@
 		270979CC1AC3735E00A54B75 /* MenuMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270979CB1AC3735E00A54B75 /* MenuMaker.swift */; };
 		270979CE1AC3749400A54B75 /* MenuDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270979CD1AC3749400A54B75 /* MenuDocument.swift */; };
 		270979D01AC379A300A54B75 /* OpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270979CF1AC379A300A54B75 /* OpenPanel.swift */; };
+		270979D21AC3853C00A54B75 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270979D11AC3853C00A54B75 /* Menu.swift */; };
 		270D4D641AAFFA5B0079AC3E /* Library Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270D4D631AAFFA5B0079AC3E /* Library Manager.storyboard */; };
 		271EF5911A4A23850092C104 /* CommaderItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EF58F1A4A23850092C104 /* CommaderItemViewController.swift */; };
 		2730C4C01A479B160020FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730C4BF1A479B160020FB56 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		270979CB1AC3735E00A54B75 /* MenuMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuMaker.swift; sourceTree = "<group>"; };
 		270979CD1AC3749400A54B75 /* MenuDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDocument.swift; sourceTree = "<group>"; };
 		270979CF1AC379A300A54B75 /* OpenPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenPanel.swift; sourceTree = "<group>"; };
+		270979D11AC3853C00A54B75 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		270D4D631AAFFA5B0079AC3E /* Library Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Library Manager.storyboard"; sourceTree = "<group>"; };
 		270D4D671AB005CE0079AC3E /* Commander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Commander-Bridging-Header.h"; sourceTree = "<group>"; };
 		271EF58F1A4A23850092C104 /* CommaderItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommaderItemViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				277A612B1AA6BC67004A18CC /* CommanderItemFilterQueue.swift */,
 				2762517B1AC0D3ED00C386DA /* LibraryManager.swift */,
 				270979CB1AC3735E00A54B75 /* MenuMaker.swift */,
+				270979D11AC3853C00A54B75 /* Menu.swift */,
 				273525D51A523DF000769231 /* UI */,
 				270D4D671AB005CE0079AC3E /* Commander-Bridging-Header.h */,
 				2730C4C31A479B160020FB56 /* Images.xcassets */,
@@ -338,6 +341,7 @@
 				2730C4DD1A479B340020FB56 /* CommanderItem.swift in Sources */,
 				2730C4C21A479B160020FB56 /* ViewController.swift in Sources */,
 				27DDFC881A94312C00C865FF /* CommanderAction.swift in Sources */,
+				270979D21AC3853C00A54B75 /* Menu.swift in Sources */,
 				2730C4C01A479B160020FB56 /* AppDelegate.swift in Sources */,
 				273A2E3D1A48FAF400129F20 /* json.swift in Sources */,
 				27FB6BA21A522263004A11D2 /* Async.swift in Sources */,

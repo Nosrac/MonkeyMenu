@@ -24,10 +24,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			window.close()
 		}
 		
-		LibraryManager.loadLibraries();
+		LibraryManager.loadLibraries()
 		LibraryManager.open()
 		
-		MenuMaker.createMenu("/private/tmp/test");
+		MenuMaker.createMenu("/private/tmp/test")
 	}
 
 	func applicationWillTerminate(aNotification: NSNotification) {
@@ -38,10 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	{
 		for file in filenames as! [String]
 		{
-			if let library = LibraryManager.installLibrary(file)
-			{
-				LibraryManager.openWindow(library)
-			}
+			LibraryManager.installLibrary(file, openWindow: true)
 		}
 	}
 

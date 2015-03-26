@@ -12,10 +12,10 @@ import Cocoa
 class LibraryManager
 {
 	static var libraryWindows : [NSWindow] = []
-	static var libraries : [ CommanderItem ] = []
+	static var menus : [ Menu ] = []
 	static func loadLibraries()
 	{
-		var items : [CommanderItem] = []
+		var items : [Menu] = []
 		
 		let error = NSErrorPointer()
 		
@@ -23,22 +23,17 @@ class LibraryManager
 		
 		if let contents = contents
 		{
-			for file : String in contents as! [String]
+			for uuid : String in contents as! [String]
 			{
-				var itemFile = self.librariesDirectory + "/" + file + "/user/library.json"
-				
-				if self.manager.fileExistsAtPath(itemFile)
+				if let menu = Menu(uuid: uuid)
 				{
-					if let item = CommanderItem(file: itemFile)
-					{
-						items.append(item)
-						self.openWindow(item)
-					}
+					menus.append(menu)
+					self.openWindow(menu)
 				}
 			}
 		}
 		
-		self.libraries = items
+		self.menus = items
 	}
 	
 	static var window : NSWindow?
@@ -64,7 +59,7 @@ class LibraryManager
 		let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, .UserDomainMask, true)
 		let appSupprt = paths.first! as! String
 		
-		let base = appSupprt + "/com.kyleacarson.Commander/"
+		let base = appSupprt + "/Monkey Menu/"
 		
 		self.createDirectory(base)
 		
@@ -78,30 +73,20 @@ class LibraryManager
 	static func newDirectory() -> String
 	{
 		let uuid = NSUUID().UUIDString
-		var dir = self.librariesDirectory + "/+" + uuid + "/"
+		var dir = self.librariesDirectory + "/" + uuid + "/"
 		
 		self.createDirectory(dir);
 		
 		return dir
 	}
 	
-	static func openWindow(file : String)
-	{
-		if self.manager.fileExistsAtPath(file)
-		{
-			if let item = CommanderItem(file: file)
-			{
-				self.openWindow(item)
-			}
-		}
-	}
-	
-	static func openWindow(item : CommanderItem)
+	static func openWindow(menu : Menu)
 	{
 		if let storyboard = NSStoryboard(name: "Main", bundle: nil),
 			windowController = storyboard.instantiateInitialController() as? NSWindowController,
 			window = windowController.window,
-			controller = window.contentViewController as? CommanderItemViewController
+			controller = window.contentViewController as? CommanderItemViewController,
+			item = menu.item
 		{
 			self.window = window
 			window.makeKeyAndOrderFront(nil)
@@ -118,71 +103,75 @@ class LibraryManager
 		return NSFileManager.defaultManager()
 	}
 	
-	static func installLibrary(file : String) -> String?
+	static func checkMenuFile(file: String) -> Bool
 	{
-		if file.endsWith(".monkeymenu") && NSFileManager.defaultManager().fileExistsAtPath(file)
+		var error : String?
+		
+		if !NSFileManager.defaultManager().fileExistsAtPath(file)
 		{
-			var dir = self.newDirectory()
-			var userdir = dir + "/user/"
-			
-			var error = NSErrorPointer()
-			self.manager.removeItemAtPath(userdir, error: error)
-			
-			var cli = CommandLine()
-			cli.runCommand("/usr/bin/unzip", arguments: [file, "-d", userdir])
-			
-			if !self.manager.fileExistsAtPath(userdir)
-			{
-				Log.error("Failed to unzip library \(file)", category: nil)
-				return nil
-			}
-			
-			self.cleanInstalledLibrary(userdir)
-			
-			let libraryFile = userdir + "library.json"
-			
-			if !self.manager.fileExistsAtPath(libraryFile)
-			{
-				return nil;
-			}
-			
-			self.manager.copyItemAtPath(file, toPath: dir + "/original.monkeymenu", error: error)
-			
-			return libraryFile
+			error = "Menu doesn't exist"
 		}
-		Log.error("Failed to open library \(file)", category: nil)
-		return nil;
+		if !file.endsWith(".monkeymenu")
+		{
+			error = "Menu isn't a monkey menu"
+		}
+		if !NSFileManager.defaultManager().fileExistsAtPath(file + "/library.json")
+		{
+			error = "Menu doesn't contain library.json"
+		}
+		
+		if let error = error
+		{
+			Log.error("Attempted to install menu \(file.lastPathComponent): \(error)")
+			return false
+		} else {
+			return true
+		}
+	}
+	
+	static func installLibrary(file : String, openWindow: Bool = false)
+	{
+		if !self.checkMenuFile(file)
+		{
+			return
+		}
+		
+		let uuid = NSUUID().UUIDString
+		
+		var dir = self.dirForUUID(uuid)
+		
+		if let menu = Menu(uuid:uuid)
+		{
+			var error = NSErrorPointer()
+			
+			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)
+			self.manager.copyItemAtPath(file, toPath: menu.originalDirectory, error: error)
+			
+			if openWindow
+			{
+				self.openWindow( menu )
+			}
+		}
 	}
 	
 	static func tempDir() -> String
 	{
-		var dir = "/tmp/" + NSUUID().UUIDString + "/"
+		let uuid = NSUUID().UUIDString
+		
+		var dir = "/tmp/" + uuid + "/"
 		
 		self.createDirectory(dir)
 		
 		return dir
 	}
 	
-	static func cleanInstalledLibrary(userdir : String)
+	static func dirForUUID(uuid : String) -> String
 	{
-		let error = NSErrorPointer()
-		if let items = self.manager.contentsOfDirectoryAtPath(userdir, error: error)
+		let dir = self.librariesDirectory + uuid + "/"
 		
-		// Fix archives zipped by OS X
-		where items.count == 2 && items.first! as! String == "__MACOSX"
-		{
-			let realContents = userdir + "/" + (items.last as! String)
-			if let realItems = self.manager.contentsOfDirectoryAtPath(realContents, error: error)
-			{
-				var temp = self.tempDir()
-				
-				var cli = CommandLine()
-				cli.runCommand("/bin/cp", arguments: ["-R", realContents + "/", temp])
-				self.manager.removeItemAtPath(userdir, error: error)
-				self.manager.copyItemAtPath(temp, toPath: userdir, error: error);
-				self.manager.removeItemAtPath(temp, error: error)
-			}
-		}
+		self.createDirectory(dir)
+		
+		return dir
 	}
 	
 	

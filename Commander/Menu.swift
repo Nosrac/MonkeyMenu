@@ -24,7 +24,12 @@ class Menu
 	
 	var libraryFile : String
 	{
-		return self.userDirectory + "library.json"
+			return self.userDirectory + "library.json"
+	}
+	
+	var preferencesFile : String
+	{
+		return self.userDirectory + "preferences.plist"
 	}
 	
 	var originalDirectory : String
@@ -48,12 +53,11 @@ class Menu
 		}
 	}
 	
-	var preferences : [ String : AnyObject ]
+	var preferences : NSDictionary
 	{
 		set
 		{
-			let file = self.directory + "preferences.json"
-			
+			newValue.writeToFile(self.preferencesFile, atomically: true)
 		}
 		get
 		{
@@ -64,25 +68,9 @@ class Menu
 			if NSFileManager.defaultManager().fileExistsAtPath(file)
 			{
 				let error = NSErrorPointer()
-				if let string = String(contentsOfFile: file, encoding: NSASCIIStringEncoding, error: error)
+				if let dictionary = NSDictionary(contentsOfFile: file)
 				{
-					let json = JSON( string )
-					if let dictionary = json.asDictionary
-					{
-						for (key, valJson) in dictionary
-						{
-							if let int = valJson.asInt
-							{
-								preferences[key] = int
-							} else if let double = valJson.asDouble
-							{
-								preferences[key] = double
-							} else if let string = valJson.asString
-							{
-								preferences[key] = string
-							}
-						}
-					}
+					return dictionary
 				}
 			}
 			

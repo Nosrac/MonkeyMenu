@@ -48,5 +48,45 @@ class Menu
 		}
 	}
 	
-	
+	var preferences : [ String : AnyObject ]
+	{
+		set
+		{
+			let file = self.directory + "preferences.json"
+			
+		}
+		get
+		{
+			let file = self.directory + "preferences.json"
+			
+			var preferences : [ String : AnyObject ] = [:]
+			
+			if NSFileManager.defaultManager().fileExistsAtPath(file)
+			{
+				let error = NSErrorPointer()
+				if let string = String(contentsOfFile: file, encoding: NSASCIIStringEncoding, error: error)
+				{
+					let json = JSON( string )
+					if let dictionary = json.asDictionary
+					{
+						for (key, valJson) in dictionary
+						{
+							if let int = valJson.asInt
+							{
+								preferences[key] = int
+							} else if let double = valJson.asDouble
+							{
+								preferences[key] = double
+							} else if let string = valJson.asString
+							{
+								preferences[key] = string
+							}
+						}
+					}
+				}
+			}
+			
+			return preferences
+		}
+	}
 }

@@ -35,11 +35,18 @@ class LibraryManager
 	
 	static func open()
 	{
-		if let storyboard = NSStoryboard(name: "Library Manager", bundle: nil),
-			controller = storyboard.instantiateInitialController() as? NSWindowController,
-			window = controller.window
+		if self.window == nil
 		{
-			self.window = window
+			if let storyboard = NSStoryboard(name: "Library Manager", bundle: nil),
+				controller = storyboard.instantiateInitialController() as? NSWindowController,
+				window = controller.window
+			{
+				self.window = window
+			}
+		}
+		
+		if let window = self.window
+		{
 			window.makeKeyAndOrderFront(nil)
 		}
 	}
@@ -50,7 +57,9 @@ class LibraryManager
 		
 		self.manager.createDirectoryAtPath(file, withIntermediateDirectories: true, attributes: nil, error: error)
 	}
-	static var baseDirectory : String {
+	
+	static var baseDirectory : String
+	{
 		let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, .UserDomainMask, true)
 		let appSupprt = paths.first! as! String
 		

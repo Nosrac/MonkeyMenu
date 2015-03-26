@@ -142,6 +142,8 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
+                                        <menuItem title="View Menus" keyEquivalent="M" id="o26-xb-PMv"/>
+                                        <menuItem isSeparatorItem="YES" id="SqG-t6-QIZ"/>
                                         <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
@@ -184,6 +186,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Monkey_Menu" customModuleProvider="target">
                     <connections>
                         <outlet property="newWindowMenu" destination="Was-JA-tGl" id="R0q-9R-ckB"/>
+                        <outlet property="openMenusWindowMenu" destination="o26-xb-PMv" id="Vhk-hI-jkA"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

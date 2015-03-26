@@ -62,7 +62,7 @@ class Menu : NSObject
 			self.info["author"] = "Kyle C"
 			self.info["url"] = "http://google.com"
 			self.info["twitter"] = "@kyleacarson"
-			self.info["desc"] = "Lorem ipsum and etc"
+			self.info["desc"] = "Lists a bunch of files and lets you perform actions on them.\n-Copy filepaths\n-Commit files\n-Open files\n-etc"
 			
 			super.init()
 		} else {

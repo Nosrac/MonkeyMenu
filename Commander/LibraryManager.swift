@@ -164,12 +164,17 @@ class LibraryManager
 	static func uninstallMenu( menu : Menu )
 	{
 		let dir = self.dirForUUID( menu.uuid )
-		let error = NSErrorPointer()
-		self.manager.moveItemAtPath(dir, toPath: "~/.Trash", error: error)
-		
-		self.menus.removeObject(menu)
-		
-		NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
+		if let url = NSURL.fileURLWithPath(dir)
+		{
+			let error = NSErrorPointer()
+			if ( self.manager.trashItemAtURL(url, resultingItemURL: nil, error: error) )
+			{
+				self.menus.removeObject( menu )
+				NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
+			}
+			
+			
+		}
 	}
 	
 	static func dirForUUID(uuid : String) -> String
@@ -188,8 +193,8 @@ class LibraryManager
 			if let item = aMenu.item
 			{
 				let action = CapturedTargetAction
-				{
-					self.openWindow(aMenu)
+					{
+						self.openWindow(aMenu)
 				}
 				let menuitem = NSMenuItem(title: "\(item.name) Menu", action: action.action, keyEquivalent: "")
 				menuitem.target = action

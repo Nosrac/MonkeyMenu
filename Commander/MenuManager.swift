@@ -44,11 +44,6 @@ class MenuManager: NSViewController
 		self.item = event.object as? Menu
 	}
 	
-	func openNewWindowSelector () -> Selector
-	{
-		return "openNewWindow"
-	}
-	
 	func openNewWindow()
 	{
 		if let item = self.item

@@ -35,29 +35,32 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 			}
 			NSNotificationCenter.defaultCenter().addObserver(reloadCallback, selector: reloadCallback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
 			
-			table.doubleAction = "openSelectedMenuInWindow"
+			table.doubleAction = "openClickedMenuInWindow"
 			table.target = self
 		}
 	}
 	
-	func openSelectedMenuInWindow ()
+	func openClickedMenuInWindow ()
 	{
-		if let menu = self.selectedMenu
+		if let menu = self.menu(self.table!.clickedRow)
 		{
 			LibraryManager.openWindow(menu)
 		}
 	}
 	var selectedMenu : Menu?
+	{
+		return self.menu(self.table!.selectedRow)
+	}
+	func menu(row: Int) -> Menu?
+	{
+		let menu : Menu?
+		if row >= 0 && row < LibraryManager.menus.count
 		{
-			let row = self.table!.selectedRow
-			let menu : Menu?
-			if row >= 0
-			{
-				menu = LibraryManager.menus[ row ]
-			} else {
-				menu = nil
-			}
-			return menu;
+			menu = LibraryManager.menus[ row ]
+		} else {
+			menu = nil
+		}
+		return menu;
 	}
 	
 	func openAddButtonMenu()

@@ -73,7 +73,7 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 	{
 		let open = OpenPanel()
 		open.canChooseDirectories = false
-		open.allowedFileTypes = [ ".commander-library" ]
+		open.allowedFileTypes = [ "monkeymenu" ]
 		
 		open.beginWithCompletionHandler { (button : Int) -> Void in
 			if let file = open.URL?.absoluteString

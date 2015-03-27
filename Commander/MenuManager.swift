@@ -51,5 +51,13 @@ class MenuManager: NSViewController
 			LibraryManager.openWindow(item)
 		}
 	}
+	
+	func uninstallMenu()
+	{
+		if let item = self.item
+		{
+			LibraryManager.uninstallMenu(item)
+		}
+	}
     
 }

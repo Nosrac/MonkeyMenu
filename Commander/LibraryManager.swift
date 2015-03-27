@@ -146,7 +146,7 @@ class LibraryManager
 		
 		if let menu = Menu(uuid:uuid)
 		{
-			self.menus.append(menu)
+			self.addMenu(menu)
 			var error = NSErrorPointer()
 			
 			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)
@@ -157,6 +157,17 @@ class LibraryManager
 				self.openWindow( menu )
 			}
 		}
+	}
+	
+	static func uninstallMenu( menu : Menu )
+	{
+		let dir = self.dirForUUID( menu.uuid )
+		let error = NSErrorPointer()
+		self.manager.moveItemAtPath(dir, toPath: "~/.Trash", error: error)
+		
+		self.menus.removeObject(menu)
+		
+		NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
 	}
 	
 	static func tempDir() -> String

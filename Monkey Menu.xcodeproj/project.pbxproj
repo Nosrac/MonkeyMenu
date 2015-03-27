@@ -13,6 +13,7 @@
 		270979D21AC3853C00A54B75 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270979D11AC3853C00A54B75 /* Menu.swift */; };
 		270D4D641AAFFA5B0079AC3E /* Library Manager.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 270D4D631AAFFA5B0079AC3E /* Library Manager.storyboard */; };
 		271AE1411AC4BBCA0059E477 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AE1401AC4BBCA0059E477 /* MenuManager.swift */; };
+		271AE1431AC4EC700059E477 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AE1421AC4EC700059E477 /* Array.swift */; };
 		271EF5911A4A23850092C104 /* CommaderItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EF58F1A4A23850092C104 /* CommaderItemViewController.swift */; };
 		2730C4C01A479B160020FB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730C4BF1A479B160020FB56 /* AppDelegate.swift */; };
 		2730C4C21A479B160020FB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730C4C11A479B160020FB56 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 		270D4D631AAFFA5B0079AC3E /* Library Manager.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Library Manager.storyboard"; sourceTree = "<group>"; };
 		270D4D671AB005CE0079AC3E /* Commander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Commander-Bridging-Header.h"; sourceTree = "<group>"; };
 		271AE1401AC4BBCA0059E477 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
+		271AE1421AC4EC700059E477 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		271EF58F1A4A23850092C104 /* CommaderItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommaderItemViewController.swift; sourceTree = "<group>"; };
 		2730C4BA1A479B160020FB56 /* Monkey Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monkey Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2730C4BE1A479B160020FB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				273A2E3C1A48FAF400129F20 /* json.swift */,
 				27F206771A8C33D300B7193A /* String.swift */,
 				27A4D6AE1A9E9B7300AF7404 /* CapturedTargetAction.swift */,
+				271AE1421AC4EC700059E477 /* Array.swift */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				273525D71A523E7B00769231 /* CommanderItemViewBackground.swift in Sources */,
 				27A4D6AF1A9E9B7300AF7404 /* CapturedTargetAction.swift in Sources */,
 				27A4D6AD1A9E947F00AF7404 /* CommanderItemListView.swift in Sources */,
+				271AE1431AC4EC700059E477 /* Array.swift in Sources */,
 				270979CC1AC3735E00A54B75 /* MenuMaker.swift in Sources */,
 				27F206781A8C33D300B7193A /* String.swift in Sources */,
 				2730C4DD1A479B340020FB56 /* CommanderItem.swift in Sources */,

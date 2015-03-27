@@ -143,10 +143,10 @@ class LibraryManager
 		let uuid = NSUUID().UUIDString
 		
 		var dir = self.dirForUUID(uuid)
+		self.createDirectory(dir)
 		
 		if let menu = Menu(uuid:uuid)
 		{
-			self.addMenu(menu)
 			var error = NSErrorPointer()
 			
 			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)
@@ -156,6 +156,8 @@ class LibraryManager
 			{
 				self.openWindow( menu )
 			}
+			
+			self.addMenu(menu)
 		}
 	}
 	
@@ -170,22 +172,9 @@ class LibraryManager
 		NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
 	}
 	
-	static func tempDir() -> String
-	{
-		let uuid = NSUUID().UUIDString
-		
-		var dir = "/tmp/" + uuid + "/"
-		
-		self.createDirectory(dir)
-		
-		return dir
-	}
-	
 	static func dirForUUID(uuid : String) -> String
 	{
 		let dir = self.librariesDirectory + uuid + "/"
-		
-		self.createDirectory(dir)
 		
 		return dir
 	}

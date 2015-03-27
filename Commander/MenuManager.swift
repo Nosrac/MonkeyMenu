@@ -56,7 +56,16 @@ class MenuManager: NSViewController
 	{
 		if let item = self.item
 		{
-			LibraryManager.uninstallMenu(item)
+			let confirm = "Are you sure you want to delete \(item.title)?"
+			let alert = NSAlert()
+			alert.messageText = confirm
+			alert.addButtonWithTitle("OK")
+			alert.addButtonWithTitle("Cancel")
+			
+			if alert.runModal() == NSAlertFirstButtonReturn
+			{
+				LibraryManager.uninstallMenu(item)
+			}
 		}
 	}
     

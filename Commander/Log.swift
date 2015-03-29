@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 enum LogEntryType
 {
@@ -36,14 +37,21 @@ class Log
 	{
 		let entry = LogEntry(text: text, type: type, category: category, timestamp: NSDate() )
 		
+		let text = entry.description + "\n"
+		
 		let error = NSErrorPointer()
 		if let url = NSURL(fileURLWithPath: self.filepath, isDirectory: false),
 			file = NSFileHandle(forWritingToURL: url, error: error),
-			data = entry.description.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+			data = text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
 		{
 			file.seekToEndOfFile()
 			file.writeData(data)
 		}
+	}
+	
+	static func openLog()
+	{
+		NSWorkspace.sharedWorkspace().openFile( self.filepath )
 	}
 	
 	static var filepath : String

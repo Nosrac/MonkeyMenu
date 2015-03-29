@@ -28,6 +28,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		NSNotificationCenter.defaultCenter().addObserver(callback, selector: callback.action, name: LibraryManager.menusDidChangeEvent, object: nil)
 	}
 	
+	func openLog()
+	{
+		Log.openLog()
+	}
+	
 	func setupViewMenusMenu()
 	{
 		if let item = self.openMenusWindowMenu

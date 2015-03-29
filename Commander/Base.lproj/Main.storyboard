@@ -143,6 +143,15 @@
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
                                         <menuItem title="View Menus" keyEquivalent="M" id="o26-xb-PMv"/>
+                                        <menuItem title="Open Log" keyEquivalent="L" id="kfP-FD-S7G">
+                                            <connections>
+                                                <binding destination="Voe-Tx-rLC" name="target" keyPath="self" id="Zyo-eo-THF">
+                                                    <dictionary key="options">
+                                                        <string key="NSSelectorName">openLog</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="SqG-t6-QIZ"/>
                                         <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                             <connections>

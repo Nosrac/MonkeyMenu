@@ -161,6 +161,8 @@ class CommanderItem : NSObject , Printable {
 		var children : [ CommanderItem ] = [ ]
 		if let cmd = childrenCommand
 		{
+			Log.info("\(self): Loading children")
+			
             let cli = CommandLine();
             if let dir = self.directory()
             {
@@ -177,12 +179,14 @@ class CommanderItem : NSObject , Printable {
 					if let aChild = CommanderItem(json: child)
 					{
 						children.append( aChild )
+					} else {
+						println("\(self) failed to load item #\(i)")
 					}
 				}
 				
-				Log.info("\(self) returned \(children.count) children (\(cmd))")
+				Log.info("\(self): Returned \(children.count) children (\(cmd))")
 			} else {
-				Log.error("\(self)'s children_cmd did not return output.  Expected JSON (\(cmd))")
+				Log.error("\(self): children_cmd did not return output.  Expected JSON (\(cmd))")
 			}
 		}
 		

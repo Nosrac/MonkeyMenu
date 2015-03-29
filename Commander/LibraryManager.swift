@@ -100,28 +100,13 @@ class LibraryManager
 	
 	static func checkMenuFile(file: String) -> Bool
 	{
-		var error : String?
-		
-		if !NSFileManager.defaultManager().fileExistsAtPath(file)
-		{
-			error = "Menu doesn't exist"
-		}
-		if !file.endsWith(".monkeymenu")
-		{
-			error = "Menu isn't a monkey menu"
-		}
-		if !NSFileManager.defaultManager().fileExistsAtPath(file + "/library.json")
-		{
-			error = "Menu doesn't contain library.json"
-		}
-		
-		if let error = error
+		if let error = Menu.errorForMenuFile(file)
 		{
 			Log.error("Attempted to install menu \(file.lastPathComponent): \(error)")
+
 			return false
-		} else {
-			return true
 		}
+		return true
 	}
 	
 	static func installLibrary(file : String, openWindow: Bool = false)
@@ -154,8 +139,7 @@ class LibraryManager
 	
 	static func uninstallMenu( menu : Menu )
 	{
-		let dir = self.dirForIdentifier( menu.uuid )
-		if let url = NSURL.fileURLWithPath(dir)
+		if let url = NSURL.fileURLWithPath( menu.directory)
 		{
 			let error = NSErrorPointer()
 			if ( self.manager.trashItemAtURL(url, resultingItemURL: nil, error: error) )

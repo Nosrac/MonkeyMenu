@@ -10,13 +10,13 @@ import Cocoa
 
 class Menu : NSObject
 {
-	let uuid : String
+	let identifier : String
 	
 	var info : [String:AnyObject] = [:]
 	
 	var directory : String
 	{
-		return LibraryManager.dirForIdentifier(self.uuid)
+		return LibraryManager.dirForIdentifier(self.identifier)
 	}
 	
 	var userDirectory : String
@@ -52,9 +52,26 @@ class Menu : NSObject
 		return nil
 	}()
 	
+	static func errorForMenuFile( file: String ) -> String?
+	{
+		if !NSFileManager.defaultManager().fileExistsAtPath(file)
+		{
+			return "Menu file doesn't exist"
+		} else if !file.endsWith(".monkeymenu")
+		{
+			return "File isn't a monkey menu"
+		} else if !NSFileManager.defaultManager().fileExistsAtPath(file + "/library.json")
+		{
+			return "Menu doesn't contain library.json"
+		}
+		
+		
+		return nil
+	}
+	
 	init?( identifier: String )
 	{
-		let dir = LibraryManager.dirForIdentifier(uuid)
+		let dir = LibraryManager.dirForIdentifier(identifier)
 		if NSFileManager.defaultManager().fileExistsAtPath(dir)
 		{
 			self.identifier = identifier

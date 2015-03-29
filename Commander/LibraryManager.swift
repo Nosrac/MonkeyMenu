@@ -21,9 +21,9 @@ class LibraryManager
 		
 		if let contents = contents
 		{
-			for uuid : String in contents as! [String]
+			for identifier : String in contents as! [String]
 			{
-				if let menu = Menu(uuid: uuid)
+				if let menu = Menu(identifier: identifier)
 				{
 					self.addMenu(menu)
 				}
@@ -73,15 +73,6 @@ class LibraryManager
 		let libs = self.baseDirectory + "/Libraries/"
 		self.createDirectory(libs)
 		return libs
-	}
-	static func newDirectory() -> String
-	{
-		let uuid = NSUUID().UUIDString
-		var dir = self.librariesDirectory + "/" + uuid + "/"
-		
-		self.createDirectory(dir);
-		
-		return dir
 	}
 	
 	static func openWindow(menu : Menu)
@@ -140,12 +131,12 @@ class LibraryManager
 			return
 		}
 		
-		let uuid = NSUUID().UUIDString
+		let identifier = NSUUID().UUIDString
 		
-		var dir = self.dirForUUID(uuid)
+		var dir = self.dirForIdentifier(identifier)
 		self.createDirectory(dir)
 		
-		if let menu = Menu(uuid:uuid)
+		if let menu = Menu(identifier:identifier)
 		{
 			var error = NSErrorPointer()
 			
@@ -163,7 +154,7 @@ class LibraryManager
 	
 	static func uninstallMenu( menu : Menu )
 	{
-		let dir = self.dirForUUID( menu.uuid )
+		let dir = self.dirForIdentifier( menu.uuid )
 		if let url = NSURL.fileURLWithPath(dir)
 		{
 			let error = NSErrorPointer()
@@ -172,14 +163,12 @@ class LibraryManager
 				self.menus.removeObject( menu )
 				NSNotificationCenter.defaultCenter().postNotificationName(self.menusDidChangeEvent, object: nil)
 			}
-			
-			
 		}
 	}
 	
-	static func dirForUUID(uuid : String) -> String
+	static func dirForIdentifier(identifier : String) -> String
 	{
-		let dir = self.librariesDirectory + uuid + "/"
+		let dir = self.librariesDirectory + identifier + "/"
 		
 		return dir
 	}

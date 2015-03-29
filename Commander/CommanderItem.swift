@@ -180,7 +180,7 @@ class CommanderItem : NSObject , Printable {
 					{
 						children.append( aChild )
 					} else {
-						println("\(self) failed to load item #\(i)")
+						Log.error("\(self) failed to load item #\(i)")
 					}
 				}
 				

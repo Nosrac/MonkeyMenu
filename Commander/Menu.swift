@@ -16,7 +16,7 @@ class Menu : NSObject
 	
 	var directory : String
 	{
-		return LibraryManager.dirForUUID(self.uuid)
+		return LibraryManager.dirForIdentifier(self.uuid)
 	}
 	
 	var userDirectory : String
@@ -52,21 +52,26 @@ class Menu : NSObject
 		return nil
 	}()
 	
-	init?( uuid: String )
+	init?( identifier: String )
 	{
-		let dir = LibraryManager.dirForUUID(uuid)
+		let dir = LibraryManager.dirForIdentifier(uuid)
 		if NSFileManager.defaultManager().fileExistsAtPath(dir)
 		{
-			self.uuid = uuid
+			self.identifier = identifier
 			
 			self.info["author"] = "Kyle C"
 			self.info["url"] = "http://google.com"
-			self.info["twitter"] = "@kyleacarson"
 			self.info["desc"] = "Lists a bunch of files and lets you perform actions on them.\n-Copy filepaths\n-Commit files\n-Open files\n-etc"
+			
+			self.info["identifier"] = ""
+			self.info["version"] = ""
+			
+			self.info["min_commander_version"] = ""
+			self.info["max_commander_version"] = ""
 			
 			super.init()
 		} else {
-			self.uuid = ""
+			self.identifier = ""
 			super.init()
 			return nil
 		}

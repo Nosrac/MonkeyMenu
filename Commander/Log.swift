@@ -31,28 +31,32 @@ struct LogEntry : Printable
 }
 
 class Log
-{	
+{
 	static func addEntry( text : String, type: LogEntryType, category : String? = nil )
 	{
 		let entry = LogEntry(text: text, type: type, category: category, timestamp: NSDate() )
 		
-		let manager = NSFileManager.defaultManager()
-		
-		let path = LibraryManager.baseDirectory + "log.log"
-		
-		if !manager.fileExistsAtPath(path)
-		{
-			manager.createFileAtPath(path, contents: nil, attributes: nil)
-		}
-		
 		let error = NSErrorPointer()
-		if let url = NSURL(fileURLWithPath: path, isDirectory: false),
+		if let url = NSURL(fileURLWithPath: self.filepath, isDirectory: false),
 			file = NSFileHandle(forWritingToURL: url, error: error),
 			data = entry.description.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
 		{
 			file.seekToEndOfFile()
 			file.writeData(data)
 		}
+	}
+	
+	static var filepath : String
+	{
+		let path = LibraryManager.baseDirectory + "log.log"
+		let manager = NSFileManager.defaultManager()
+		
+		if !manager.fileExistsAtPath(path)
+		{
+			manager.createFileAtPath(path, contents: nil, attributes: nil)
+		}
+		
+		return path
 	}
 	
 	static func error(text: String, category: String? = nil)

@@ -109,9 +109,7 @@ class Menu : NSObject
 		let dir = LibraryManager.dirForIdentifier(identifier)
 		let file = dir + "/user.monkeymenu"
 		
-		let error = Menu.errorForMenuFile(file)
 		if let info = Menu.infoForMenuFile(file)
-			where error == nil
 		{
 			self.info = info
 			super.init()

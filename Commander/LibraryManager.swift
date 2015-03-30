@@ -115,23 +115,25 @@ class LibraryManager
 			return
 		}
 		
-		if let info = Menu.infoForMenuFile(file),
-			menu = Menu(identifier: info.identifier)
+		if let info = Menu.infoForMenuFile(file)
 		{
 			var dir = self.dirForIdentifier(info.identifier)
 			self.createDirectory(dir)
 			
 			var error = NSErrorPointer()
 			
-			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)
-			self.manager.copyItemAtPath(file, toPath: menu.originalDirectory, error: error)
+			self.manager.copyItemAtPath(file, toPath: dir + "user.monkeymenu/", error: error)
+			self.manager.copyItemAtPath(file, toPath: dir + "original.monkeymenu/", error: error)
 			
-			if openWindow
-			{
-				self.openWindow( menu )
+			if let menu = Menu(identifier: info.identifier)
+			{	
+				if openWindow
+				{
+					self.openWindow( menu )
+				}
+				
+				self.addMenu(menu)
 			}
-			
-			self.addMenu(menu)
 		}
 	}
 	

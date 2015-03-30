@@ -122,10 +122,16 @@ class LibraryManager
 			var dir = self.dirForIdentifier(info.identifier)
 			self.createDirectory(dir)
 			
-			var error = NSErrorPointer()
+			let dirs = [
+				dir + "user.monkeymenu/",
+				dir + "original.monkeymenu/"
+			]
 			
-			self.manager.copyItemAtPath(file, toPath: dir + "user.monkeymenu/", error: error)
-			self.manager.copyItemAtPath(file, toPath: dir + "original.monkeymenu/", error: error)
+			var error = NSErrorPointer()
+			for aFile in dirs
+			{
+				self.manager.copyItemAtPath(file, toPath: aFile, error: error)
+			}
 			
 			if let menu = Menu(identifier: info.identifier)
 			{	

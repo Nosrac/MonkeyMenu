@@ -60,8 +60,9 @@ class Menu : NSObject
 	static func infoForMenuFile( file : String ) -> MenuInfo?
 	{
 		let infoFile = file + "/library.json"
+		
 		let error = NSErrorPointer()
-		if let string = NSString( contentsOfFile: file, encoding: NSUTF8StringEncoding, error: error) as? String,
+		if let string = NSString( contentsOfFile: infoFile, encoding: NSUTF8StringEncoding, error: error) as? String,
 			json = JSON( string: string ).asDictionary
 		{
 			let name = json["name"]?.asString
@@ -108,13 +109,16 @@ class Menu : NSObject
 		let dir = LibraryManager.dirForIdentifier(identifier)
 		let file = dir + "/user.monkeymenu"
 		
+		let error = Menu.errorForMenuFile(file)
 		if let info = Menu.infoForMenuFile(file)
+			where error == nil
 		{
 			self.info = info
 			super.init()
 		} else {
 			self.info = MenuInfo(name: "", desc: "", author: "", url: NSURL(string: "http://google.com")!, identifier: "", version: 0, min_version: nil, max_version: nil)
 			super.init()
+			return nil
 		}
 		
 	}
@@ -146,12 +150,6 @@ class Menu : NSObject
 	
 	var title : String
 	{
-		if let item = self.item
-		{
-			var title = "\(item.name) by \(self.info.author)"
-			
-			return title
-		}
-		return "<Unnamed Menu>"
+		return "\(self.info.name) by \(self.info.author)"
 	}
 }

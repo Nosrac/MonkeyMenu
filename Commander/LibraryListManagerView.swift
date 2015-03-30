@@ -118,14 +118,13 @@ class LibraryListManagerView: NSViewController, NSTableViewDelegate, NSTableView
 	
 	func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject?
 	{
-		return LibraryManager.menus[row]
+		return self.menu(row)
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat
 	{
 		return 32.0
 	}
-	
 	
 	func tableViewSelectionDidChange(notification: NSNotification)
 	{

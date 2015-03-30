@@ -80,13 +80,12 @@ class LibraryManager
 		if let storyboard = NSStoryboard(name: "Main", bundle: nil),
 			windowController = storyboard.instantiateInitialController() as? NSWindowController,
 			window = windowController.window,
-			controller = window.contentViewController as? CommanderItemViewController,
-			item = menu.item
+			controller = window.contentViewController as? CommanderItemViewController
 		{
 			self.window = window
 			window.makeKeyAndOrderFront(nil)
 			
-			window.title = item.name
+			window.title = menu.info.name
 			controller.menuLibrary = menu
 			
 			self.libraryWindows.append( window )
@@ -162,17 +161,14 @@ class LibraryManager
 		
 		for aMenu in self.menus
 		{
-			if let item = aMenu.item
+			let action = CapturedTargetAction
 			{
-				let action = CapturedTargetAction
-					{
-						self.openWindow(aMenu)
-				}
-				let menuitem = NSMenuItem(title: "\(item.name) Menu", action: action.action, keyEquivalent: "")
-				menuitem.target = action
-				
-				menu.addItem(menuitem)
+				self.openWindow(aMenu)
 			}
+			let menuitem = NSMenuItem(title: "\(aMenu.info.name) Menu", action: action.action, keyEquivalent: "")
+			menuitem.target = action
+			
+			menu.addItem(menuitem)
 		}
 		
 		return menu

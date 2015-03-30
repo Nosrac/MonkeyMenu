@@ -77,7 +77,9 @@ class Menu : NSObject
 			let min_version = json["min_version"]?.asDouble
 			let max_version = json["max_version"]?.asDouble
 			
-			if let name = name, urlString = urlString, desc = desc, identifier = identifier, version = version, author = author, url = NSURL(string: urlString)
+			let cmd = json["children_cmd"]?.asString
+			
+			if let name = name, urlString = urlString, desc = desc, identifier = identifier, version = version, author = author, url = NSURL(string: urlString), cmd = cmd
 			{
 				return MenuInfo(name: name, desc: desc, author: author, url: url, identifier: identifier, version: version, min_version: min_version, max_version: max_version)
 			}
@@ -98,7 +100,7 @@ class Menu : NSObject
 		{
 			return "Menu doesn't contain library.json"
 		} else if self.infoForMenuFile(file) == nil {
-			return "Menu didn't contain correct fields.  Requires: name, url, desc, identifier, and version"
+			return "Menu didn't contain correct fields.  Requires: name, url, desc, identifier, version, and children_cmd"
 		}
 		
 		return nil

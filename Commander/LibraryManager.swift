@@ -26,6 +26,8 @@ class LibraryManager
 				if let menu = Menu(identifier: identifier)
 				{
 					self.addMenu(menu)
+				} else {
+					Log.error("Failed to open Menu \(identifier)")
 				}
 			}
 		}

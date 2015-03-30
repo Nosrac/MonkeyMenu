@@ -17,7 +17,7 @@ class MenuManager: NSViewController
 			if let item = item
 			{
 				self.view.hidden = false
-				self.descTextView?.string = item.desc
+				self.descTextView?.string = item.info.desc
 				self.headerTextView?.stringValue = item.title
 			} else {
 				

@@ -116,13 +116,12 @@ class LibraryManager
 			return
 		}
 		
-		let identifier = NSUUID().UUIDString
-		
-		var dir = self.dirForIdentifier(identifier)
-		self.createDirectory(dir)
-		
-		if let menu = Menu(identifier:identifier)
+		if let info = Menu.infoForMenuFile(file),
+			menu = Menu(identifier: info.identifier)
 		{
+			var dir = self.dirForIdentifier(info.identifier)
+			self.createDirectory(dir)
+			
 			var error = NSErrorPointer()
 			
 			self.manager.copyItemAtPath(file, toPath: menu.userDirectory, error: error)

@@ -8,15 +8,29 @@
 
 import Cocoa
 
-class Menu : NSObject
+struct MenuInfo
 {
+	let name : String
+	let desc : String
+	
+	let author : String
+	let url : NSURL
+	
 	let identifier : String
 	
-	var info : [String:AnyObject] = [:]
+	let version : Double
+	
+	let min_version : Double?
+	let max_version : Double?
+}
+
+class Menu : NSObject
+{
+	let info : MenuInfo
 	
 	var directory : String
 	{
-		return LibraryManager.dirForIdentifier(self.identifier)
+		return LibraryManager.dirForIdentifier(self.info.identifier)
 	}
 	
 	var userDirectory : String
@@ -26,7 +40,7 @@ class Menu : NSObject
 	
 	var libraryFile : String
 	{
-			return self.userDirectory + "library.json"
+		return self.userDirectory + "library.json"
 	}
 	
 	var preferencesFile : String
@@ -43,14 +57,33 @@ class Menu : NSObject
 		return CommanderItem(file: self.libraryFile)
 	}()
 	
-	lazy var desc : String? =
+	static func infoForMenuFile( file : String ) -> MenuInfo?
 	{
-		if let desc = self.info["desc"] as? String
+		let infoFile = file + "/library.json"
+		let error = NSErrorPointer()
+		if let string = NSString( contentsOfFile: file, encoding: NSUTF8StringEncoding, error: error) as? String,
+			json = JSON( string: string ).asDictionary
 		{
-			return desc
+			let name = json["name"]?.asString
+			let desc = json["desc"]?.asString
+			
+			let urlString = json["url"]?.asString
+			let author = json["author"]?.asString
+			
+			let identifier = json["identifier"]?.asString
+			let version = json["version"]?.asDouble
+			
+			let min_version = json["min_version"]?.asDouble
+			let max_version = json["max_version"]?.asDouble
+			
+			if let name = name, urlString = urlString, desc = desc, identifier = identifier, version = version, author = author, url = NSURL(string: urlString)
+			{
+				return MenuInfo(name: name, desc: desc, author: author, url: url, identifier: identifier, version: version, min_version: min_version, max_version: max_version)
+			}
 		}
+		
 		return nil
-	}()
+	}
 	
 	static func errorForMenuFile( file: String ) -> String?
 	{
@@ -63,8 +96,9 @@ class Menu : NSObject
 		} else if !NSFileManager.defaultManager().fileExistsAtPath(file + "/library.json")
 		{
 			return "Menu doesn't contain library.json"
+		} else if self.infoForMenuFile(file) == nil {
+			return "Menu didn't contain correct fields.  Requires: name, url, desc, identifier, and version"
 		}
-		
 		
 		return nil
 	}
@@ -72,26 +106,17 @@ class Menu : NSObject
 	init?( identifier: String )
 	{
 		let dir = LibraryManager.dirForIdentifier(identifier)
-		if NSFileManager.defaultManager().fileExistsAtPath(dir)
+		let file = dir + "/user.monkeymenu"
+		
+		if let info = Menu.infoForMenuFile(file)
 		{
-			self.identifier = identifier
-			
-			self.info["author"] = "Kyle C"
-			self.info["url"] = "http://google.com"
-			self.info["desc"] = "Lists a bunch of files and lets you perform actions on them.\n-Copy filepaths\n-Commit files\n-Open files\n-etc"
-			
-			self.info["identifier"] = ""
-			self.info["version"] = ""
-			
-			self.info["min_commander_version"] = ""
-			self.info["max_commander_version"] = ""
-			
+			self.info = info
 			super.init()
 		} else {
-			self.identifier = ""
+			self.info = MenuInfo(name: "", desc: "", author: "", url: NSURL(string: "http://google.com")!, identifier: "", version: 0, min_version: nil, max_version: nil)
 			super.init()
-			return nil
 		}
+		
 	}
 	
 	var preferences : NSDictionary
@@ -123,12 +148,7 @@ class Menu : NSObject
 	{
 		if let item = self.item
 		{
-			var title = item.name
-			
-			if let author = self.info["author"] as? String
-			{
-				title = "\(title) by \(author)"
-			}
+			var title = "\(item.name) by \(self.info.author)"
 			
 			return title
 		}

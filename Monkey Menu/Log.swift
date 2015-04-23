@@ -35,7 +35,7 @@ class Log
 {
 	static func addEntry( text : String, type: LogEntryType, category : String? = nil )
 	{
-		let entry = LogEntry(text: text, type: type, category: category, timestamp: NSDate() )
+		let entry = LogEntry(text: text, type: type, category: category)
 		
 		let text = entry.description + "\n"
 		

@@ -22,7 +22,7 @@ struct CommanderFilterCache
 	let filteredItems : [CommanderItem]
 }
 
-class CommanderItemFilter
+final class CommanderItemFilter
 {
 	let items : [ CommanderItem ]
 	var search = "" {

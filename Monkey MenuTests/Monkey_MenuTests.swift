@@ -1,15 +1,15 @@
 //
-//  CommanderTests.swift
-//  CommanderTests
+//  Monkey_MenuTests.swift
+//  Monkey MenuTests
 //
-//  Created by Kyle Carson on 12/21/14.
-//  Copyright (c) 2014 Kyle Carson. All rights reserved.
+//  Created by Kyle Carson on 4/22/15.
+//  Copyright (c) 2015 Kyle Carson. All rights reserved.
 //
 
 import Cocoa
 import XCTest
 
-class CommanderTests: XCTestCase {
+class Monkey_MenuTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

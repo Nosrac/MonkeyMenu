@@ -19,6 +19,7 @@ class CommanderAction : NSObject , Printable {
 	
 	let shellCommand : String?
 	let copyString : String?
+	let text : String?
 	let dismiss : Bool
 	let confirmationMessage : String?
 	let open : String?
@@ -98,6 +99,13 @@ class CommanderAction : NSObject , Printable {
 			self.copyString = copy
 		} else {
 			self.copyString = nil
+		}
+		
+		if let text = values["text"] as? String
+		{
+			self.text = text
+		} else {
+			self.text = nil
 		}
 		
 		if let keystroke = values["keystroke"] as? String
@@ -200,12 +208,14 @@ class CommanderAction : NSObject , Printable {
 	
 		self.tryRunCommand(context)
 		self.tryCopy(context)
+		self.tryShowText(context)
 		self.tryOpen(context)
 		self.tryOpenItem( context )
 		
 		if self.dismiss
 		{
 			NSApplication.sharedApplication().hide(self)
+			NSApplication.sharedApplication().unhide(self)
 		}
 	}
 	
@@ -231,12 +241,24 @@ class CommanderAction : NSObject , Printable {
 	{
 		if let copy = self.copyString
 		{
-			let pasteboard = NSPasteboard.generalPasteboard()
-			
-			let item = NSPasteboardItem(pasteboardPropertyList: copy, ofType: NSPasteboardTypeString)
-			
-			pasteboard.clearContents()
-			pasteboard.writeObjects([ item ])
+			Clipboard.copy( copy )
+		}
+	}
+	
+	func tryShowText ( context : CommanderActionContext )
+	{
+		if let text = self.text
+		{
+			if let window = context.itemViewController.view.window
+			{
+				let firstLine = text.componentsSeparatedByString("\n").first
+				let alert = NSAlert()
+				alert.informativeText = text
+				alert.messageText = firstLine
+				alert.beginSheetModalForWindow(window, completionHandler: { (response) -> Void in
+
+				})
+			}
 		}
 	}
 	

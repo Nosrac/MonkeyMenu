@@ -13,10 +13,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBOutlet var newWindowMenu : NSMenuItem?
 	@IBOutlet var openMenusWindowMenu : NSMenuItem?
-
-	func applicationDidFinishLaunching(aNotification: NSNotification) {
-		
-		
+	
+	func applicationDidFinishLaunching(aNotification: NSNotification)
+	{
+		self.doUpgrades()
+	}
+	
+	func doUpgrades()
+	{
+		if let version : Double = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")?.doubleValue
+		{
+			NSUserDefaults.standardUserDefaults().setDouble(version, forKey: "version")
+		}
 	}
 	
 	func watchMenuChanges()
@@ -38,8 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		if let item = self.openMenusWindowMenu
 		{
 			let callback = CapturedTargetAction
-			{
-				LibraryManager.open()
+				{
+					LibraryManager.open()
 			}
 			
 			item.target = callback
@@ -64,7 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		LibraryManager.open()
 		
 	}
-
+	
 	func applicationWillTerminate(aNotification: NSNotification) {
 		// Insert code here to tear down your application
 	}
@@ -76,6 +84,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			LibraryManager.installLibrary(file, openWindow: true)
 		}
 	}
-
+	
 }
 

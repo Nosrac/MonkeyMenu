@@ -110,6 +110,9 @@ class CommanderItemList: ViewController, NSTableViewDataSource, NSTableViewDeleg
 	{
 		let menu = NSMenu()
 		
+//		let title = NSMenuItem(title: item.name, action: "blah", keyEquivalent: "")
+//		menu.addItem( title )
+		
 		for action in item.actions
 		{
 			menu.addItem( self.menuItemForAction(action, item: item) )

@@ -36,15 +36,13 @@
       "scale" : "1x"
     },
     {
-      "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "Monkey-1.png",
+      "size" : "256x256",
       "scale" : "2x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "Monkey.png",
+      "size" : "512x512",
       "scale" : "1x"
     },
     {

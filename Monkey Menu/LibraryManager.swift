@@ -134,7 +134,11 @@ class LibraryManager
 			}
 			
 			if let menu = Menu(identifier: info.identifier)
-			{	
+			{
+				
+				MenuInstallerController.installMenu(menu)
+				return
+				
 				if openWindow
 				{
 					self.openWindow( menu )
